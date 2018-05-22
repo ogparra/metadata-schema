@@ -1,40 +1,39 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Information about the medical history of an organism.",
     "additionalProperties": false,
-    "title": "medical_history",
-    "type": "object",
+    "description": "Information about the medical history of an organism.",
+    "id": "https://schema.humancellatlas.org/module/biomaterial/5.1.0/medical_history",
     "properties": {
-        "describedBy":  {
-            "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/module/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/medical_history"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
         "alcohol_history": {
             "description": "Number of drinks consumed on a typical day.",
             "type": "string",
             "user_friendly": "Alcohol history"
         },
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://schema.humancellatlas.org/module/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/medical_history",
+            "type": "string"
+        },
         "medication": {
-           "description": "List of medications the organism was currently taking at time of biomaterial donation.",
-           "type": "string",
+            "description": "List of medications the organism was currently taking at time of biomaterial donation.",
+            "type": "string",
             "user_friendly": "Medications"
         },
         "nutritional_state": {
             "description": "Should be one of normal, fasting, or feeding tube removed.",
-            "type": "string",
             "enum": [
                 "normal",
                 "fasting",
                 "feeding tube removed"
             ],
+            "type": "string",
             "user_friendly": "Nutritional state"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
         },
         "smoking_history": {
             "description": "Estimated number of cigarettes smoked per day and for how many years.",
@@ -51,5 +50,7 @@
             "type": "string",
             "user_friendly": "Treatments"
         }
-    }
+    },
+    "title": "medical_history",
+    "type": "object"
 }

@@ -1,37 +1,28 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Information relating to how a biomaterial was grown and/or maintained in a laboratory setting.",
     "additionalProperties": false,
-    "title": "growth_conditions",
-    "type": "object",
+    "description": "Information relating to how a biomaterial was grown and/or maintained in a laboratory setting.",
+    "id": "https://schema.humancellatlas.org/module/biomaterial/6.0.0/growth_conditions",
     "properties": {
-        "describedBy":  {
+        "describedBy": {
             "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/module/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/growth_conditions"
+            "pattern": "https://schema.humancellatlas.org/module/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/growth_conditions",
+            "type": "string"
         },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
+        "drug_treatment": {
+            "description": "Description of drugs added to the growth medium for this biomaterial.",
+            "example": "100 ug/mL ampicillin",
             "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "passage_number": {
-            "description": "The number of passages the cell line has been through.",
-            "maximum": 1000,
-            "minimum": 0,
-            "type": "integer",
-            "user_friendly": "Passage number"
+            "user_friendly": "Drug treatment"
         },
         "growth_medium": {
             "description": "The solid, liquid, or semi-solid medium used to support the growth of the biomaterial.",
-            "type": "string",
             "example": "lysogeny broth (LB) medium",
+            "type": "string",
             "user_friendly": "Growth medium"
         },
         "mycoplasma_testing_method": {
             "description": "The method by which a biomaterial is tested for mycoplasma contamination. Must be one of: Direct DNA stain, Indirect DNA stain, Broth and agar culture, PCR, Nested PCR, ELISA, Autoradiography, Immunostaining, Cell-based assay, Microbiological assay.",
-            "type": "string",
             "enum": [
                 "Direct DNA stain",
                 "Indirect DNA stain",
@@ -45,23 +36,33 @@
                 "Microbiological assay"
             ],
             "example": "Indirect DNA stain",
+            "type": "string",
             "user_friendly": "Mycoplasma testing method"
         },
         "mycoplasma_testing_results": {
             "description": "Whether the biomaterial passed or failed the mycoplasma test. Must be pass or fail.",
-            "type": "string",
             "enum": [
                 "pass",
                 "fail"
             ],
             "example": "pass",
+            "type": "string",
             "user_friendly": "Mycoplasma testing results"
         },
-        "drug_treatment": {
-            "description": "Description of drugs added to the growth medium for this biomaterial.",
-            "type": "string",
-            "example": "100 ug/mL ampicillin",
-            "user_friendly": "Drug treatment"
+        "passage_number": {
+            "description": "The number of passages the cell line has been through.",
+            "maximum": 1000,
+            "minimum": 0,
+            "type": "integer",
+            "user_friendly": "Passage number"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
         }
-    }
+    },
+    "title": "growth_conditions",
+    "type": "object"
 }

@@ -1,38 +1,46 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A term that may be associated with a protocol-related ontology term",
     "additionalProperties": false,
-    "required": [
-        "text"
-    ],
-    "title": "protocol_type_ontology",
+    "description": "A term that may be associated with a protocol-related ontology term",
+    "id": "https://schema.humancellatlas.org/module/ontology/5.1.1/protocol_type_ontology",
     "properties": {
-        "describedBy":  {
+        "describedBy": {
             "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/protocol_type_ontology"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "text": {
-            "description": "The name of a protocol type used.",
+            "pattern": "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/protocol_type_ontology",
             "type": "string"
         },
         "ontology": {
             "description": "An ontology term identifier in the form prefix:accession",
-            "type": "string",
-            "graph_restriction":  {
-                "ontologies" : ["obo:efo", "obo:obi"],
-                "classes": ["OBI:0000272"],
-                "relations": ["rdfs:subClassOf"],
+            "graph_restriction": {
+                "classes": [
+                    "OBI:0000272"
+                ],
                 "direct": false,
-                "include_self": false
-            }
+                "include_self": false,
+                "ontologies": [
+                    "obo:efo",
+                    "obo:obi"
+                ],
+                "relations": [
+                    "rdfs:subClassOf"
+                ]
+            },
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "text": {
+            "description": "The name of a protocol type used.",
+            "type": "string"
         }
     },
+    "required": [
+        "text"
+    ],
+    "title": "protocol_type_ontology",
     "type": "object"
 }

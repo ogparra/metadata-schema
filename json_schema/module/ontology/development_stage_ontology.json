@@ -1,37 +1,47 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A term that may be associated with a development stage-related ontology term",
     "additionalProperties": false,
-    "required": [
-        "text"
-    ],
-    "title": "development_stage_ontology",
+    "description": "A term that may be associated with a development stage-related ontology term",
+    "id": "https://schema.humancellatlas.org/module/ontology/5.1.1/development_stage_ontology",
     "properties": {
         "describedBy": {
-            "pattern" : "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/development_stage_ontology",
-            "type": "string"
-        },
-        "schema_version": {
-            "description": "Version number in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "text": {
-            "description": "The name of the development stage of the organism.",
+            "pattern": "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/development_stage_ontology",
             "type": "string"
         },
         "ontology": {
             "description": "An ontology term identifier in the form prefix:accession",
-            "type": "string",
-            "graph_restriction":  {
-                "ontologies" : ["obo:efo", "obo:hcao"],
-                "classes": ["EFO:0000399", "HsapDv:0000000", "UBERON:0000105"],
-                "relations": ["rdfs:subClassOf"],
+            "graph_restriction": {
+                "classes": [
+                    "EFO:0000399",
+                    "HsapDv:0000000",
+                    "UBERON:0000105"
+                ],
                 "direct": false,
-                "include_self": false
-            }
+                "include_self": false,
+                "ontologies": [
+                    "obo:efo",
+                    "obo:hcao"
+                ],
+                "relations": [
+                    "rdfs:subClassOf"
+                ]
+            },
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "Version number in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "text": {
+            "description": "The name of the development stage of the organism.",
+            "type": "string"
         }
     },
+    "required": [
+        "text"
+    ],
+    "title": "development_stage_ontology",
     "type": "object"
 }

@@ -1,38 +1,46 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A term that may be associated with a cell type-related ontology term",
     "additionalProperties": false,
-    "required": [
-        "text"
-    ],
-    "title": "mass_unit_ontology",
-    "type": "object",
+    "description": "A term that may be associated with a cell type-related ontology term",
+    "id": "https://schema.humancellatlas.org/module/ontology/5.1.1/mass_unit_ontology",
     "properties": {
-        "describedBy":  {
+        "describedBy": {
             "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/mass_unit_ontology"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "text": {
-            "description": "The name of a mass unit being used.",
+            "pattern": "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/mass_unit_ontology",
             "type": "string"
         },
         "ontology": {
             "description": "An ontology term identifier in the form prefix:accession",
-            "type": "string",
-            "graph_restriction":  {
-                "ontologies" : ["obo:efo", "obo:uo"],
-                "classes": ["UO:0000002"],
-                "relations": ["rdfs:subClassOf"],
+            "graph_restriction": {
+                "classes": [
+                    "UO:0000002"
+                ],
                 "direct": false,
-                "include_self": false
-            }
+                "include_self": false,
+                "ontologies": [
+                    "obo:efo",
+                    "obo:uo"
+                ],
+                "relations": [
+                    "rdfs:subClassOf"
+                ]
+            },
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "text": {
+            "description": "The name of a mass unit being used.",
+            "type": "string"
         }
-    }
+    },
+    "required": [
+        "text"
+    ],
+    "title": "mass_unit_ontology",
+    "type": "object"
 }

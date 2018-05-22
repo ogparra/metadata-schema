@@ -1,25 +1,26 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A protocol entity contains information about an intended protocol that was followed in the project.",
     "additionalProperties": false,
-    "required": [
-        "protocol_id"
-    ],
-    "title": "protocol_core",
-    "type": "object",
+    "description": "A protocol entity contains information about an intended protocol that was followed in the project.",
+    "id": "https://schema.humancellatlas.org/core/protocol/5.1.0/protocol_core",
     "properties": {
         "describedBy": {
             "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/core/protocol/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/protocol_core"
+            "pattern": "https://schema.humancellatlas.org/core/protocol/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/protocol_core",
+            "type": "string"
         },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
+        "document": {
+            "description": "A filename of a PDF document containing the details of the protocol.",
+            "pattern": "^.*.pdf$",
             "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
+            "user_friendly": "Document filename"
         },
-        "protocol_id":{
+        "protocol_description": {
+            "description": "A general description of the protocol.",
+            "type": "string",
+            "user_friendly": "Protocol description"
+        },
+        "protocol_id": {
             "description": "A unique ID for this protocol.",
             "type": "string",
             "user_friendly": "Protocol ID"
@@ -29,28 +30,28 @@
             "type": "string",
             "user_friendly": "Protocol name"
         },
-        "protocol_description": {
-            "description": "A general description of the protocol.",
+        "protocols_io_doi": {
+            "description": "The protocols.io digital object identifier (doi) associated with the protocol.",
+            "example": "10.17504/protocols.io.mgjc3un",
             "type": "string",
-            "user_friendly": "Protocol description"
+            "user_friendly": "protocols.io DOI"
         },
         "publication_doi": {
             "description": "The publication digital object identifier (doi) associated with the protocol.",
-            "type": "string",
             "example": "10.1101/193219",
+            "type": "string",
             "user_friendly": "Publication DOI"
         },
-        "protocols_io_doi": {
-            "description": "The protocols.io digital object identifier (doi) associated with the protocol.",
-            "type": "string",
-            "example": "10.17504/protocols.io.mgjc3un",
-            "user_friendly": "protocols.io DOI"
-        },
-        "document": {
-            "description": "A filename of a PDF document containing the details of the protocol.",
-            "type": "string",
-            "pattern": "^.*.pdf$",
-            "user_friendly": "Document filename"
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
         }
-    }
+    },
+    "required": [
+        "protocol_id"
+    ],
+    "title": "protocol_core",
+    "type": "object"
 }

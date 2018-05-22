@@ -1,37 +1,46 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A term that may be associated with a cell cycle-related ontology term",
     "additionalProperties": false,
-    "required": [
-        "text"
-    ],
-    "title": "cell_cycle_ontology",
+    "description": "A term that may be associated with a cell cycle-related ontology term",
+    "id": "https://schema.humancellatlas.org/module/ontology/5.1.1/cell_cycle_ontology",
     "properties": {
         "describedBy": {
-            "pattern" : "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/cell_cycle_ontology",
-            "type": "string"
-        },
-        "schema_version": {
-            "description": "Version number in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "text": {
-            "description": "The name of a cell cycle of the cells in the specimen.",
+            "pattern": "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/cell_cycle_ontology",
             "type": "string"
         },
         "ontology": {
             "description": "An ontology term identifier in the form prefix:accession",
-            "type": "string",
-            "graph_restriction":  {
-                "ontologies" : ["obo:hcao", "obo:go"],
-                "classes": ["GO:0007049", "GO:0022403"],
-                "relations": ["rdfs:subClassOf"],
+            "graph_restriction": {
+                "classes": [
+                    "GO:0007049",
+                    "GO:0022403"
+                ],
                 "direct": false,
-                "include_self": false
-            }
+                "include_self": false,
+                "ontologies": [
+                    "obo:hcao",
+                    "obo:go"
+                ],
+                "relations": [
+                    "rdfs:subClassOf"
+                ]
+            },
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "Version number in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "text": {
+            "description": "The name of a cell cycle of the cells in the specimen.",
+            "type": "string"
         }
     },
+    "required": [
+        "text"
+    ],
+    "title": "cell_cycle_ontology",
     "type": "object"
 }

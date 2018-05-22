@@ -1,43 +1,44 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Information about the process",
     "additionalProperties": false,
+    "description": "Information about the process",
+    "id": "https://schema.humancellatlas.org/type/process/1.0.0/process",
+    "properties": {
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://schema.humancellatlas.org/type/process/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/process",
+            "type": "string"
+        },
+        "process_core": {
+            "$ref": "https://schema.humancellatlas.org/core/process/5.1.0/process_core",
+            "description": "Core process-level information.",
+            "type": "object"
+        },
+        "process_type": {
+            "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.0/process_type_ontology",
+            "description": "The type of process. Must be a child term of https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOBI_0000272.",
+            "type": "object",
+            "user_friendly": "process type"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "enum": [
+                "process"
+            ],
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        }
+    },
     "required": [
         "describedBy",
         "schema_type",
         "process_core"
     ],
     "title": "process",
-    "type": "object",
-    "properties": {
-         "describedBy":  {
-            "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/type/process/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/process"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "schema_type": {
-            "description": "The type of the metadata schema entity.",
-            "type": "string",
-            "enum": [
-                "process"
-            ]
-        },
-        "process_core" : {
-            "description": "Core process-level information.",
-            "type": "object",
-            "$ref": "core/process/process_core.json"
-        },
-        "process_type": {
-            "description": "The type of process. Must be a child term of https://www.ebi.ac.uk/ols/ontologies/efo/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FOBI_0000272.",
-            "type": "object",
-            "$ref": "module/ontology/process_type_ontology.json",
-            "user_friendly": "process type"
-        }
-    }
+    "type": "object"
 }

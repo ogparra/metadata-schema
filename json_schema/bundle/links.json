@@ -1,61 +1,62 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "description": "A schema for a links bundle.",
-  "additionalProperties": false,
-  "required": [
-    "describedBy",
-    "schema_type"
-  ],
-  "title": "links",
-  "type": "object",
-  "definitions": {
-      "bundle_links": {
-         "type": "object",
-         "properties": {
-          "source_type": {
-            "description": "The type of the entity this link starts from",
-            "type": "string"
-          },
-          "source_id": {
-            "description": "The id of the entity this link starts from",
-            "type": "string"
-          },
-          "destination_type": {
-            "description": "The type of the entity this link goes to",
-            "type": "string"
-          },
-          "destination_id": {
-            "description": "The id  of the entity this link goes to",
-            "type": "string"
-          }
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "additionalProperties": false,
+    "definitions": {
+        "bundle_links": {
+            "properties": {
+                "destination_id": {
+                    "description": "The id  of the entity this link goes to",
+                    "type": "string"
+                },
+                "destination_type": {
+                    "description": "The type of the entity this link goes to",
+                    "type": "string"
+                },
+                "source_id": {
+                    "description": "The id of the entity this link starts from",
+                    "type": "string"
+                },
+                "source_type": {
+                    "description": "The type of the entity this link starts from",
+                    "type": "string"
+                }
+            },
+            "type": "object"
         }
-      }
-  },
-  "properties": {
-    "describedBy": {
-      "description": "The URL reference to the schema.",
-      "type": "string",
-      "pattern": "https://schema.humancellatlas.org/bundle/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/links"
     },
-    "schema_version": {
-      "description": "The version number of the schema in major.minor.patch format.",
-      "type": "string",
-      "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$"
+    "description": "A schema for a links bundle.",
+    "id": "https://schema.humancellatlas.org/bundle/1.0.0/links",
+    "properties": {
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://schema.humancellatlas.org/bundle/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/links",
+            "type": "string"
+        },
+        "links": {
+            "description": "An array of linking objects",
+            "items": {
+                "$ref": "https://schema.humancellatlas.org/bundle/1.0.0/links#/definitions/bundle_links",
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "enum": [
+                "link_bundle"
+            ],
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        }
     },
-    "schema_type": {
-      "description": "The type of the metadata schema entity.",
-      "type": "string",
-      "enum": [
-        "link_bundle"
-      ]
-    },
-    "links": {
-      "description": "An array of linking objects",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "$ref": "bundle/links.json#/definitions/bundle_links"
-      }
-    }
-  }
+    "required": [
+        "describedBy",
+        "schema_type"
+    ],
+    "title": "links",
+    "type": "object"
 }

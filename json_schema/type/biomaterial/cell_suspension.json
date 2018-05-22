@@ -1,75 +1,76 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Information about the cell suspension derived from the collected or cultured specimen",
     "additionalProperties": false,
+    "description": "Information about the cell suspension derived from the collected or cultured specimen",
+    "id": "https://schema.humancellatlas.org/type/biomaterial/6.0.1/cell_suspension",
+    "properties": {
+        "biomaterial_core": {
+            "$ref": "https://schema.humancellatlas.org/core/biomaterial/5.1.0/biomaterial_core",
+            "description": "Core biomaterial-level information.",
+            "type": "object"
+        },
+        "cell_morphology": {
+            "$ref": "https://schema.humancellatlas.org/module/biomaterial/5.1.1/cell_morphology",
+            "description": "Features relating to the morphology of cells in a biomaterial.",
+            "type": "object",
+            "user_friendly": "Cell morphology"
+        },
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://schema.humancellatlas.org/type/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/cell_suspension",
+            "type": "string"
+        },
+        "genus_species": {
+            "description": "The scientific binomial name for the species of the biomaterial.",
+            "example": "Homo sapiens",
+            "items": {
+                "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.2/species_ontology"
+            },
+            "type": "array",
+            "user_friendly": "Genus species"
+        },
+        "growth_conditions": {
+            "$ref": "https://schema.humancellatlas.org/module/biomaterial/6.0.0/growth_conditions",
+            "description": "Features relating to the growth and/or maintenance of a biomaterial.",
+            "type": "object",
+            "user_friendly": "Growth conditions"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "enum": [
+                "biomaterial"
+            ],
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "selected_cell_type": {
+            "description": "The cell type(s) selected to be present in the suspension. Should be a child term of https://www.ebi.ac.uk/ols/ontologies/clo/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FCL_0000003.",
+            "example": "fetal cardiomyocyte",
+            "items": {
+                "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.1/cell_type_ontology"
+            },
+            "type": "array",
+            "user_friendly": "Selected cell type"
+        },
+        "total_estimated_cells": {
+            "description": "Total estimated number of cells in biomaterial. May be 1 for well-based assays.",
+            "example": "2100",
+            "maximum": 1000000000,
+            "minimum": 0,
+            "type": "integer",
+            "user_friendly": "Total estimated cell count"
+        }
+    },
     "required": [
         "describedBy",
         "schema_type",
         "biomaterial_core"
     ],
     "title": "cell_suspension",
-    "type": "object",
-    "properties": {
-        "describedBy":  {
-            "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/type/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/cell_suspension"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "schema_type": {
-            "description": "The type of the metadata schema entity.",
-            "type": "string",
-            "enum": [
-                "biomaterial"
-            ]
-        },
-        "biomaterial_core" : {
-            "description": "Core biomaterial-level information.",
-            "type": "object",
-            "$ref": "core/biomaterial/biomaterial_core.json"
-        },
-        "cell_morphology": {
-            "description": "Features relating to the morphology of cells in a biomaterial.",
-            "type": "object",
-            "$ref": "module/biomaterial/cell_morphology.json",
-            "user_friendly": "Cell morphology"
-        },
-        "growth_conditions": {
-            "description": "Features relating to the growth and/or maintenance of a biomaterial.",
-            "type": "object",
-            "$ref": "module/biomaterial/growth_conditions.json",
-            "user_friendly": "Growth conditions"
-        },
-        "genus_species": {
-            "description": "The scientific binomial name for the species of the biomaterial.",
-            "type" : "array",
-            "example": "Homo sapiens",
-            "items":{
-                "$ref": "module/ontology/species_ontology.json"
-            },
-            "user_friendly": "Genus species"
-        },
-        "selected_cell_type": {
-            "description" : "The cell type(s) selected to be present in the suspension. Should be a child term of https://www.ebi.ac.uk/ols/ontologies/clo/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FCL_0000003.",
-            "type": "array",
-            "items": {
-		        "$ref": "module/ontology/cell_type_ontology.json"
-	        },
-            "example": "fetal cardiomyocyte",
-            "user_friendly": "Selected cell type"
-       },
-        "total_estimated_cells": {
-            "description": "Total estimated number of cells in biomaterial. May be 1 for well-based assays.",
-            "type": "integer",
-            "maximum": 1000000000,
-            "minimum": 0,
-            "example": "2100",
-            "user_friendly": "Total estimated cell count"
-        }
-     }
+    "type": "object"
 }

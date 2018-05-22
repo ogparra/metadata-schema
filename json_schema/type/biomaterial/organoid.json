@@ -1,7 +1,83 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Information about an organoid biomaterial.",
     "additionalProperties": false,
+    "description": "Information about an organoid biomaterial.",
+    "id": "https://schema.humancellatlas.org/type/biomaterial/5.1.2/organoid",
+    "properties": {
+        "biomaterial_core": {
+            "$ref": "https://schema.humancellatlas.org/core/biomaterial/5.1.0/biomaterial_core",
+            "description": "Core biomaterial-level information.",
+            "type": "object"
+        },
+        "cell_morphology": {
+            "$ref": "https://schema.humancellatlas.org/module/biomaterial/5.1.1/cell_morphology",
+            "description": "Features relating to the morphology of cells in a biomaterial.",
+            "type": "object",
+            "user_friendly": "Cell morphology"
+        },
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://schema.humancellatlas.org/type/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/organoid",
+            "type": "string"
+        },
+        "genus_species": {
+            "description": "The scientific binomial name for the species of the biomaterial.",
+            "example": "Homo sapiens",
+            "items": {
+                "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.2/species_ontology"
+            },
+            "type": "array",
+            "user_friendly": "Genus species"
+        },
+        "growth_conditions": {
+            "$ref": "https://schema.humancellatlas.org/module/biomaterial/6.0.0/growth_conditions",
+            "description": "Features relating to the growth and/or maintenance of a biomaterial.",
+            "type": "object",
+            "user_friendly": "Growth conditions"
+        },
+        "model_for_organ": {
+            "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.1/organ_ontology",
+            "description": "Organ for which this organoid is a model system.",
+            "type": "object",
+            "user_friendly": "Organ model"
+        },
+        "organoid_age": {
+            "description": "Age of the organoid.",
+            "example": 55,
+            "type": "number",
+            "user_friendly": "Organoid age"
+        },
+        "organoid_age_unit": {
+            "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.1/time_unit_ontology",
+            "description": "The unit in which organoid age is expressed. Must be one of hour, day, week, month, or year.",
+            "type": "object",
+            "user_friendly": "Organoid age unit"
+        },
+        "organoid_type": {
+            "description": "The type of organoid. Must be one of primary, immortalized, stem cell-derived, or synthetic.",
+            "enum": [
+                "primary",
+                "immortalized",
+                "stem cell-derived",
+                "synthetic"
+            ],
+            "type": "string",
+            "user_friendly": "Organoid type"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "enum": [
+                "biomaterial"
+            ],
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        }
+    },
     "required": [
         "describedBy",
         "schema_type",
@@ -9,80 +85,5 @@
         "model_for_organ"
     ],
     "title": "organoid",
-    "type": "object",
-    "properties": {
-        "describedBy":  {
-            "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/type/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/organoid"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "schema_type": {
-            "description": "The type of the metadata schema entity.",
-            "type": "string",
-            "enum": [
-                "biomaterial"
-            ]
-        },
-        "biomaterial_core" : {
-            "description": "Core biomaterial-level information.",
-            "type": "object",
-            "$ref": "core/biomaterial/biomaterial_core.json"
-        },
-        "cell_morphology": {
-            "description": "Features relating to the morphology of cells in a biomaterial.",
-            "type": "object",
-            "$ref": "module/biomaterial/cell_morphology.json",
-            "user_friendly": "Cell morphology"
-        },
-        "growth_conditions": {
-            "description": "Features relating to the growth and/or maintenance of a biomaterial.",
-            "type": "object",
-            "$ref": "module/biomaterial/growth_conditions.json",
-            "user_friendly": "Growth conditions"
-        },
-        "genus_species": {
-            "description": "The scientific binomial name for the species of the biomaterial.",
-            "type" : "array",
-            "example": "Homo sapiens",
-            "items":{
-                "$ref": "module/ontology/species_ontology.json"
-            },
-            "user_friendly": "Genus species"
-        },
-        "model_for_organ": {
-            "description":  "Organ for which this organoid is a model system.",
-            "type": "object",
-            "$ref": "module/ontology/organ_ontology.json",
-            "user_friendly": "Organ model"
-        },
-        "organoid_age": {
-            "description": "Age of the organoid.",
-            "type": "number",
-            "example": 55,
-            "user_friendly": "Organoid age"
-        },
-        "organoid_age_unit": {
-            "description": "The unit in which organoid age is expressed. Must be one of hour, day, week, month, or year.",
-            "type": "object",
-            "$ref": "module/ontology/time_unit_ontology.json",
-            "user_friendly": "Organoid age unit"
-        },
-        "organoid_type": {
-            "description": "The type of organoid. Must be one of primary, immortalized, stem cell-derived, or synthetic.",
-            "type": "string",
-            "enum": [
-                "primary",
-                "immortalized",
-                "stem cell-derived",
-                "synthetic"
-            ],
-            "user_friendly": "Organoid type"
-        }
-    }
+    "type": "object"
 }

@@ -1,42 +1,43 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A project contains information about the overall project.",
     "additionalProperties": false,
-    "required": [
-	    "project_shortname",
-        "project_title"
-    ],
-    "title": "project_core",
-    "type": "object",
+    "description": "A project contains information about the overall project.",
+    "id": "https://schema.humancellatlas.org/core/project/5.1.0/project_core",
     "properties": {
         "describedBy": {
             "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/core/project/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/project_core"
+            "pattern": "https://schema.humancellatlas.org/core/project/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/project_core",
+            "type": "string"
         },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
+        "project_description": {
+            "description": "A longer description of the project which can include research goals and experimental approach.",
+            "example": "An abstract from a grant application or publication. Approximately 300 words.",
             "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
+            "user_friendly": "Project description"
         },
         "project_shortname": {
             "description": "A unique label for the project.",
-            "type": "string",
             "example": "Tissue Stability",
+            "type": "string",
             "user_friendly": "Project shortname"
         },
         "project_title": {
             "description": "A summary of the project in a sentence.",
-            "type": "string",
             "example": "A title of a grant proposal or publication. Approximately 30 words.",
+            "type": "string",
             "user_friendly": "Project title"
         },
-        "project_description": {
-            "description": "A longer description of the project which can include research goals and experimental approach.",
-            "type": "string",
-            "example": "An abstract from a grant application or publication. Approximately 300 words.",
-            "user_friendly": "Project description"
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
         }
-    }
+    },
+    "required": [
+        "project_shortname",
+        "project_title"
+    ],
+    "title": "project_core",
+    "type": "object"
 }

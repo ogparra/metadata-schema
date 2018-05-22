@@ -1,37 +1,44 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A term that may be associated with a ethnicity-related ontology term",
     "additionalProperties": false,
-    "required": [
-        "text"
-    ],
-    "title": "ethnicity_ontology",
+    "description": "A term that may be associated with a ethnicity-related ontology term",
+    "id": "https://schema.humancellatlas.org/module/ontology/5.1.0/ethnicity_ontology",
     "properties": {
-        "describedBy" : {
-            "pattern" : "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/ethnicity_ontology",
-            "type": "string"
-        },
-        "schema_version": {
-            "description": "Version number in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "text": {
-            "description": "The ethnicity of the human donor.",
+        "describedBy": {
+            "pattern": "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/ethnicity_ontology",
             "type": "string"
         },
         "ontology": {
             "description": "An ontology term identifier in the form prefix:accession",
-            "type": "string",
-            "graph_restriction":  {
-                "ontologies" : ["obo:ancestro"],
-                "classes": ["ancestro:0004"],
-                "relations": ["rdfs:subClassOf"],
+            "graph_restriction": {
+                "classes": [
+                    "ancestro:0004"
+                ],
                 "direct": false,
-                "include_self": false
-            }
+                "include_self": false,
+                "ontologies": [
+                    "obo:ancestro"
+                ],
+                "relations": [
+                    "rdfs:subClassOf"
+                ]
+            },
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "Version number in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "text": {
+            "description": "The ethnicity of the human donor.",
+            "type": "string"
         }
     },
+    "required": [
+        "text"
+    ],
+    "title": "ethnicity_ontology",
     "type": "object"
 }

@@ -1,64 +1,75 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A schema for a protocol bundle.",
     "additionalProperties": false,
+    "definitions": {
+        "protocol_ingest": {
+            "properties": {
+                "content": {
+                    "description": "Content for any process type entity.",
+                    "oneOf": [
+                        {
+                            "$ref": "https://schema.humancellatlas.org/type/protocol/analysis/5.1.1/analysis_protocol"
+                        },
+                        {
+                            "$ref": "https://schema.humancellatlas.org/type/protocol/biomaterial/5.1.1/biomaterial_collection_protocol"
+                        },
+                        {
+                            "$ref": "https://schema.humancellatlas.org/type/protocol/imaging/5.1.1/imaging_protocol"
+                        },
+                        {
+                            "$ref": "https://schema.humancellatlas.org/type/protocol/sequencing/5.1.1/sequencing_protocol"
+                        },
+                        {
+                            "$ref": "https://schema.humancellatlas.org/type/protocol/5.1.1/protocol"
+                        }
+                    ],
+                    "type": "object"
+                },
+                "hca_ingest": {
+                    "$ref": "https://schema.humancellatlas.org/bundle/5.1.0/ingest_audit",
+                    "description": "Core fields added by HCA ingest service",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "hca_ingest",
+                "content"
+            ],
+            "type": "object"
+        }
+    },
+    "description": "A schema for a protocol bundle.",
+    "id": "https://schema.humancellatlas.org/bundle/5.1.1/protocol",
+    "properties": {
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://schema.humancellatlas.org/bundle/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/protocol",
+            "type": "string"
+        },
+        "protocols": {
+            "description": "An array of protocols.",
+            "items": {
+                "$ref": "https://schema.humancellatlas.org/bundle/5.1.1/protocol#/definitions/protocol_ingest"
+            },
+            "type": "array"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "enum": [
+                "protocol_bundle"
+            ],
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        }
+    },
     "required": [
         "describedBy",
         "schema_type"
     ],
     "title": "protocol",
-    "type": "object",
-    "definitions": {
-        "protocol_ingest": {
-            "required": [
-                "hca_ingest",
-                "content"
-            ],
-            "type": "object",
-            "properties": {
-                "hca_ingest": {
-                    "description": "Core fields added by HCA ingest service",
-                    "type": "object",
-                    "$ref": "bundle/ingest_audit.json"
-                },
-                "content": {
-                    "description": "Content for any process type entity.",
-                    "type": "object",
-                    "oneOf": [
-                        { "$ref": "type/protocol/analysis/analysis_protocol.json" },
-                        { "$ref": "type/protocol/biomaterial/biomaterial_collection_protocol.json" },
-                        { "$ref": "type/protocol/imaging/imaging_protocol.json" },
-                        { "$ref": "type/protocol/sequencing/sequencing_protocol.json" },
-                        { "$ref": "type/protocol/protocol.json" }
-                    ]
-                }
-            }
-        }
-    },
-    "properties": {
-        "describedBy":  {
-            "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/bundle/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/protocol"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$"
-        },
-        "schema_type": {
-            "description": "The type of the metadata schema entity.",
-            "type": "string",
-            "enum": [
-                "protocol_bundle"
-            ]
-        },
-        "protocols": {
-            "description": "An array of protocols.",
-            "items": {
-                "$ref": "bundle/protocol.json#/definitions/protocol_ingest"
-            },
-            "type": "array"
-        }
-    }
+    "type": "object"
 }

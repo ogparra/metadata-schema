@@ -1,58 +1,59 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A schema for a reference bundle.",
     "additionalProperties": false,
+    "definitions": {
+        "reference_ingest": {
+            "properties": {
+                "content": {
+                    "$ref": "https://schema.humancellatlas.org/type/file/1.0.3/reference_file",
+                    "description": "Content for any reference type entity.",
+                    "type": "object"
+                },
+                "hca_ingest": {
+                    "$ref": "https://schema.humancellatlas.org/bundle/5.1.0/ingest_audit",
+                    "description": "Core fields added by HCA ingest service",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "hca_ingest",
+                "content"
+            ],
+            "type": "object"
+        }
+    },
+    "description": "A schema for a reference bundle.",
+    "id": "https://schema.humancellatlas.org/bundle/1.0.3/reference",
+    "properties": {
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://schema.humancellatlas.org/bundle/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/reference",
+            "type": "string"
+        },
+        "references": {
+            "description": "An array of reference files.",
+            "items": {
+                "$ref": "https://schema.humancellatlas.org/bundle/1.0.3/reference#/definitions/reference_ingest"
+            },
+            "type": "array"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
+            "enum": [
+                "reference_bundle"
+            ],
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        }
+    },
     "required": [
         "describedBy",
         "schema_type"
     ],
     "title": "reference",
-    "type": "object",
-    "definitions": {
-        "reference_ingest": {
-            "required": [
-                "hca_ingest",
-                "content"
-            ],
-            "type": "object",
-            "properties": {
-                "hca_ingest": {
-                    "description": "Core fields added by HCA ingest service",
-                    "type": "object",
-                    "$ref": "bundle/ingest_audit.json"
-                },
-                "content": {
-                    "description": "Content for any reference type entity.",
-                    "type": "object",
-                    "$ref": "type/file/reference_file.json"
-                }
-            }
-        }
-    },
-    "properties": {
-        "describedBy" : {
-            "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/bundle/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/reference"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$"
-        },
-        "schema_type": {
-            "description": "The type of the metadata schema entity.",
-            "type": "string",
-            "enum": [
-                "reference_bundle"
-            ]
-        },
-        "references": {
-            "description": "An array of reference files.",
-            "type": "array",
-            "items": {
-                "$ref": "bundle/reference.json#/definitions/reference_ingest"
-            }
-        }
-    }
+    "type": "object"
 }

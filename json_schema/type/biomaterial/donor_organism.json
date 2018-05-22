@@ -1,103 +1,65 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Information about the organism from which a specimen was collected.",
     "additionalProperties": false,
-    "required": [
-        "describedBy",
-        "schema_type",
-        "biomaterial_core",
-        "is_living",
-        "biological_sex"
-    ],
-    "title": "donor_organism",
-    "type": "object",
+    "description": "Information about the organism from which a specimen was collected.",
+    "id": "https://schema.humancellatlas.org/type/biomaterial/5.1.2/donor_organism",
     "properties": {
-        "describedBy":  {
-            "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern" : "https://schema.humancellatlas.org/type/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/donor_organism"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "schema_type": {
-            "description": "The type of the metadata schema entity.",
-            "type": "string",
+        "biological_sex": {
+            "description": "The biological sex of the organism. Should be one of male, female, mixed, or unknown.",
             "enum": [
-                "biomaterial"
-            ]
+                "female",
+                "male",
+                "mixed",
+                "unknown"
+            ],
+            "type": "string",
+            "user_friendly": "Biological sex"
         },
-        "biomaterial_core" : {
+        "biomaterial_core": {
+            "$ref": "https://schema.humancellatlas.org/core/biomaterial/5.1.0/biomaterial_core",
             "description": "Core biomaterial-level information.",
-            "type": "object",
-            "$ref": "core/biomaterial/biomaterial_core.json"
-        },
-        "human_specific": {
-            "description": "Fields specific to human (homo sapiens) organisms.",
-            "type": "object",
-            "$ref": "module/biomaterial/homo_sapiens_specific.json"
-        },
-        "mus_musculus_specific": {
-            "description": "Fields specific to mouse (mus musculus) organisms.",
-            "type": "object",
-            "$ref": "module/biomaterial/mus_musculus_specific.json"
+            "type": "object"
         },
         "death": {
+            "$ref": "https://schema.humancellatlas.org/module/biomaterial/5.1.0/death",
             "description": "Information about conditions of death of an organism.",
-            "type": "object",
-            "$ref": "module/biomaterial/death.json"
+            "type": "object"
         },
-        "medical_history": {
-            "description": "Information about the medical history of an organism.",
-            "type": "object",
-            "$ref": "module/biomaterial/medical_history.json"
-        },
-        "genus_species": {
-            "description": "The scientific binomial name for the species of the biomaterial.",
-            "type" : "array",
-            "example": "Homo sapiens",
-            "items":{
-                "$ref": "module/ontology/species_ontology.json"
-            },
-            "user_friendly": "Genus species"
-        },
-        "organism_age": {
-            "description": "Age in age_units. Measured since birth.",
-            "pattern": "^[0-9]+\\.?[0-9]*-?[0-9]*\\.?[0-9]*$",
-            "type": "string",
-            "user_friendly": "Organism age"
-        }, 
-        "organism_age_unit": {
-            "description": "The unit in which age is expressed. Must be one of hour, day, week, month, or year.",
-            "type": "object",
-            "$ref": "module/ontology/time_unit_ontology.json",
-            "user_friendly": "Organism age unit",
-            "example": "year"
+        "describedBy": {
+            "description": "The URL reference to the schema.",
+            "pattern": "https://schema.humancellatlas.org/type/biomaterial/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/donor_organism",
+            "type": "string"
         },
         "development_stage": {
+            "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.1/development_stage_ontology",
             "description": "A classification of the developmental stage of the organism.",
             "type": "object",
-            "$ref": "module/ontology/development_stage_ontology.json",
             "user_friendly": "Development stage"
-        }, 
+        },
         "disease": {
             "description": "Short description of disease status of the organism.",
-            "type": "array",
             "items": {
-                "$ref": "module/ontology/disease_ontology.json"
-	        },
+                "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.1/disease_ontology"
+            },
+            "type": "array",
             "user_friendly": "Disease"
         },
         "familial_relationship": {
             "description": "Information about other organisms related to this organism.",
-            "type": "array",
             "items": {
-                "$ref": "module/biomaterial/familial_relationship.json"
-                },
+                "$ref": "https://schema.humancellatlas.org/module/biomaterial/5.1.0/familial_relationship"
+            },
+            "type": "array",
             "user_friendly": "Familial relationship"
+        },
+        "genus_species": {
+            "description": "The scientific binomial name for the species of the biomaterial.",
+            "example": "Homo sapiens",
+            "items": {
+                "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.2/species_ontology"
+            },
+            "type": "array",
+            "user_friendly": "Genus species"
         },
         "gestational_age": {
             "description": "Gestational age in gestational_age_units. Measured since fertilization.",
@@ -106,9 +68,9 @@
             "user_friendly": "Gestational age"
         },
         "gestational_age_unit": {
+            "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.1/time_unit_ontology",
             "description": "The unit in which gestational age is expressed. Must be one of hour, day, week, month, or year.",
             "type": "object",
-            "$ref": "module/ontology/time_unit_ontology.json",
             "user_friendly": "Gestational age unit"
         },
         "height": {
@@ -118,26 +80,56 @@
             "user_friendly": "Height"
         },
         "height_unit": {
+            "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.1/length_unit_ontology",
             "description": "The unit in which height is expressed. Must be a child term of https://www.ebi.ac.uk/ols/ontologies/uo/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUO_0000001.",
             "type": "object",
-            "$ref": "module/ontology/length_unit_ontology.json",
             "user_friendly": "Height unit"
+        },
+        "human_specific": {
+            "$ref": "https://schema.humancellatlas.org/module/biomaterial/5.1.0/homo_sapiens_specific",
+            "description": "Fields specific to human (homo sapiens) organisms.",
+            "type": "object"
         },
         "is_living": {
             "description": "Yes if organism is living at time of biomaterial collection. No otherwise.",
             "type": "boolean",
             "user_friendly": "Is living?"
-        }, 
-        "biological_sex": {
-            "description": "The biological sex of the organism. Should be one of male, female, mixed, or unknown.",
+        },
+        "medical_history": {
+            "$ref": "https://schema.humancellatlas.org/module/biomaterial/5.1.0/medical_history",
+            "description": "Information about the medical history of an organism.",
+            "type": "object"
+        },
+        "mus_musculus_specific": {
+            "$ref": "https://schema.humancellatlas.org/module/biomaterial/5.1.1/mus_musculus_specific",
+            "description": "Fields specific to mouse (mus musculus) organisms.",
+            "type": "object"
+        },
+        "organism_age": {
+            "description": "Age in age_units. Measured since birth.",
+            "pattern": "^[0-9]+\\.?[0-9]*-?[0-9]*\\.?[0-9]*$",
             "type": "string",
+            "user_friendly": "Organism age"
+        },
+        "organism_age_unit": {
+            "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.1/time_unit_ontology",
+            "description": "The unit in which age is expressed. Must be one of hour, day, week, month, or year.",
+            "example": "year",
+            "type": "object",
+            "user_friendly": "Organism age unit"
+        },
+        "schema_type": {
+            "description": "The type of the metadata schema entity.",
             "enum": [
-                "female", 
-                "male", 
-                "mixed", 
-                "unknown"
+                "biomaterial"
             ],
-            "user_friendly": "Biological sex"
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
         },
         "weight": {
             "description": "Weight of organism in kilograms.",
@@ -146,10 +138,19 @@
             "user_friendly": "Weight"
         },
         "weight_unit": {
+            "$ref": "https://schema.humancellatlas.org/module/ontology/5.1.1/mass_unit_ontology",
             "description": "The unit in which weight is expressed. Must be a child term of https://www.ebi.ac.uk/ols/ontologies/uo/terms?iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUO_0000002.",
             "type": "object",
-            "$ref": "module/ontology/mass_unit_ontology.json",
             "user_friendly": "Weight unit"
         }
-    }
+    },
+    "required": [
+        "describedBy",
+        "schema_type",
+        "biomaterial_core",
+        "is_living",
+        "biological_sex"
+    ],
+    "title": "donor_organism",
+    "type": "object"
 }

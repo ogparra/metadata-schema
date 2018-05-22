@@ -1,38 +1,46 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "A term that may be associated with a strain-related ontology term",
     "additionalProperties": false,
-    "required": [
-        "text"
-    ],
-    "title": "strain_ontology",
+    "description": "A term that may be associated with a strain-related ontology term",
+    "id": "https://schema.humancellatlas.org/module/ontology/5.1.1/strain_ontology",
     "properties": {
         "describedBy": {
             "description": "The URL reference to the schema.",
-            "type": "string",
-            "pattern": "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/strain_ontology"
-        },
-        "schema_version": {
-            "description": "The version number of the schema in major.minor.patch format.",
-            "type": "string",
-            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
-            "example": "4.6.1"
-        },
-        "text": {
-            "description": "The name of the strain to which the organism belongs (mouse-specific).",
+            "pattern": "https://schema.humancellatlas.org/module/ontology/[0-9]{1,}.[0-9]{1,}.[0-9]{1,}/strain_ontology",
             "type": "string"
         },
         "ontology": {
             "description": "An ontology term identifier in the form prefix:accession",
-            "type": "string",
-            "graph_restriction":  {
-                "ontologies" : ["obo:efo", "obo:NCBITaxon"],
-                "classes": ["NCBITaxon:10090"],
-                "relations": ["rdfs:subClassOf"],
+            "graph_restriction": {
+                "classes": [
+                    "NCBITaxon:10090"
+                ],
                 "direct": false,
-                "include_self": false
-            }
+                "include_self": false,
+                "ontologies": [
+                    "obo:efo",
+                    "obo:NCBITaxon"
+                ],
+                "relations": [
+                    "rdfs:subClassOf"
+                ]
+            },
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "The version number of the schema in major.minor.patch format.",
+            "example": "4.6.1",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "type": "string"
+        },
+        "text": {
+            "description": "The name of the strain to which the organism belongs (mouse-specific).",
+            "type": "string"
         }
     },
+    "required": [
+        "text"
+    ],
+    "title": "strain_ontology",
     "type": "object"
 }
