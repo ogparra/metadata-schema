@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "A module for capturing information about an imaging process that assays for the localization of a single target producing data collected in a single channel.",
+    "additionalProperties": false,
+    "title": "single_channel_imaging",
+    "required": [],
+    "type": "object",
+    "properties": {
+      "channel_identifier": {
+        "description": "An identifier used for this channel within the experiment, e.g. 'red channel' or channel 1.  This should align with the way channels are eferenced in file_names or file manifests.",
+        "type": "string"
+      },
+      "protocol_type": {
+        "description": "The type of protocol used to assay for the signal in this channel, e.g. smFISH; antibody stain; fluorescent dye. This field is required.",
+        "type": "object",
+        "$ref": ""
+      },
+      "reagent": {
+        "description": "The specific reagent used to detect single in this channel. Examples include, a fluorescent probe used in smFISH; a commercial antibody; a commercial fluorescent dye.",
+        "type": "object",
+        "$ref": "module/process/purchased_reagents.json"
+      },
+      "target_gene_product": {
+        "description": "Gene product targeted by reagent.",
+        "type": "String"
+      },
+      "target subcellular structure":  {
+        "description": "Subcellular structure targeted by reagent.",
+        "type": "object",
+        "$ref": "TBA"
+      }
+    }
+}
