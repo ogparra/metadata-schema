@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "A term that may be associated with an imaging-related ontology term",
+    "additionalProperties": false,
+    "required": [
+        "text"
+    ],
+    "title": "instrument_ontology",
+    "properties": {
+        "describedBy":  {
+            "pattern" : "^(http|https)://schema.(.*?)humancellatlas.org/module/ontology/(([0-9]{1,}.[0-9]{1,}.[0-9]{1,})|([a-zA-Z]*?))/instrument_ontology",
+            "type": "string"
+        },
+        "text": {
+            "description": "The name of the microscopy technique used, e.g. confocal, two-photon, super-resolution",
+            "type": "string"
+        },
+        "schema_version": {
+            "description": "Version number in major.minor.patch format.",
+            "type": "string",
+            "pattern": "^[0-9]{1,}.[0-9]{1,}.[0-9]{1,}$",
+            "example": "4.6.1"
+        },
+        "ontology": {
+            "description": "An ontology term identifier in the form prefix:accession",
+            "type": "string",
+            "graph_restriction":  {
+                "ontologies" : ["obo:hcao"],
+                "classes": ["..."],
+                "relations": ["rdfs:subClassOf"],
+                "direct": false,
+                "include_self": false
+            }
+        }
+    },
+    "type": "object"
+}

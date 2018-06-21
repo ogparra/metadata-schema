@@ -27,7 +27,7 @@
       "target subcellular structure":  {
         "description": "Subcellular structure targeted by reagent.",
         "type": "object",
-        "$ref": "TBA"
+        "$ref": "module/ontology/cellular_component.json"
       }
     }
 }
